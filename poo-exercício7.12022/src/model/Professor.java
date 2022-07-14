@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import interfaces.CalculaMedia;
+import suport.Situacao;
 
 public class Professor extends Pessoa implements CalculaMedia{
 	
@@ -76,8 +77,11 @@ public class Professor extends Pessoa implements CalculaMedia{
 
 	@Override
 	public float calculaMediaGeral() {
-		// TODO Auto-generated method stub
-		return 0;
+		float somaNotas = 0;
+		for (Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getMediaDisciplina();
+		}
+		return somaNotas / disciplinas.size();
 	}
 
 	@Override
@@ -85,7 +89,11 @@ public class Professor extends Pessoa implements CalculaMedia{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+	public String calculaMediaGeral2() {
+		return calculaMediaGeral() >=7 ? Situacao.APROVADO : Situacao.REPROVADO;
+		
+		
+	}
 	
 
 }

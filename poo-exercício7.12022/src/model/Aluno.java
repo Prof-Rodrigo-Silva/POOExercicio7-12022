@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import interfaces.CalculaMedia;
+import suport.Situacao;
 
 public class Aluno extends Pessoa implements CalculaMedia{
 
@@ -89,14 +90,28 @@ public class Aluno extends Pessoa implements CalculaMedia{
 
 	@Override
 	public float calculaMediaGeral() {
-		// TODO Auto-generated method stub
-		return 0;
+		float somaNotas = 0;
+		for (Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getMediaDisciplina();
+		}
+		return somaNotas / disciplinas.size();
 	}
 
 	@Override
 	public boolean calculaMediaGeral1() {
-		// TODO Auto-generated method stub
-		return false;
+		if(calculaMediaGeral()>=7) {
+			return true;
+		}else {return false;}
+	}
+	
+	public String calculaMediaGeral2() {
+		if(calculaMediaGeral1()) {
+			return Situacao.APROVADO;
+		}else if (calculaMediaGeral() < 7 && calculaMediaGeral() >= 5){
+			return Situacao.RECUPERACAO;
+		}else {
+			return Situacao.REPROVADO;
+		}
 	}
 	
 }
