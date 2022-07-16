@@ -3,6 +3,8 @@ package classeexecutavel;
 import model.Aluno;
 import model.Disciplina;
 import model.Nota;
+import model.Professor;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,6 +61,10 @@ public class ClasseExecutavel {
 		
 			alunos.add(aluno);
 		}
+		List<Professor> professores = new ArrayList<Professor>();
+		//Após add dados dos professores
+		
+		
 		System.out.println("------------LISTA DE ALUNOS------------");
 		for(Aluno aluno : alunos) {
 			System.out.println("------------ALUNO------------");
@@ -70,6 +76,7 @@ public class ClasseExecutavel {
 			System.out.println("Semestre do aluno: "+aluno.getSemestreMatriculado());
 			System.out.println("Média Geral: "+aluno.calculaMediaGeral());
 			System.out.println("Situação: "+aluno.calculaMediaGeral2());
+			System.out.println("Maior de Idade: "+aluno.maiorIdade(17));
 			
 			System.out.println("------------LISTA DE DISCIPLINAS------------");
 			for(Disciplina disciplina : aluno.getDisciplinas()) {
